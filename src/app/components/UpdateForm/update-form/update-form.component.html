@@ -1,0 +1,49 @@
+<div class="container mt-5">
+    <div class="card shadow-lg rounded-3 p-4">
+        <div class="card-header bg-warning text-white text-center">
+            <h2 class="mb-0">Update Product</h2>
+        </div>
+        <div class="card-body">
+            <form [formGroup]="updateForm" (ngSubmit)="saveChanges(product)">
+                <div class="row g-3">
+                    <div class="col-md-6">
+                        <label class="form-label" >Title</label>
+                        <input type="text" class="form-control"  name="title" formControlName="title">
+                        <div class="text-danger" *ngIf="updateForm.get('title')?.invalid && updateForm.get('title')?.touched">Title is required</div>
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label">Description</label>
+                        <textarea class="form-control"  name="description" rows="2" formControlName="description" ></textarea>
+                        <div class="text-danger" *ngIf="updateForm.get('description')?.invalid && updateForm.get('description')?.touched">Description is required</div>
+                        <div class="text-danger" *ngIf="updateForm.get('description')?.errors?.['wordLimitExceeded']">
+                            Description cannot exceed 150 words!
+                        </div>
+                    </div>
+                    <!-- <div class="col-md-6">
+                        <label class="form-label">Category</label>
+                        <input type="text" class="form-control"  name="category">
+                    </div> -->
+                    <div class="col-md-6">
+                        <label class="form-label">Price</label>
+                        <input type="number" class="form-control"  name="price"  formControlName="price">
+                        <div class="text-danger" *ngIf="updateForm.get('price')?.invalid && updateForm.get('price')?.touched">price is required</div>
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label">Stock</label>
+                        <input type="number" class="form-control"  name="stock"  formControlName="stock">
+                        <div class="text-danger" *ngIf="updateForm.get('stock')?.invalid && updateForm.get('stock')?.touched">stock is required</div>
+                    </div>
+                    <!-- <div class="col-md-6">
+                        <label class="form-label">Thumbnail URL</label>
+                        <input type="text" class="form-control"  name="thumbnail">
+                    </div> -->
+                </div>
+                <div class="mt-4 text-center">
+                    <button type="submit" class="btn btn-primary btn-lg px-5" >
+                        <i class="fas fa-edit" ></i> Update Product
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

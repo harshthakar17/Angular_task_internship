@@ -1,0 +1,29 @@
+
+
+<div class="row">
+    <div class="col-6">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>id</th>
+                    <th>title</th>
+                    <th>price</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+               
+                    <tr *ngFor="let item of serverData;">
+                        <td>{{item.id}}</td>
+                        <td>{{item.title}}</td>
+                        <td>{{item.price}}</td>
+                        <td>
+                            <button class="btn btn-success" routerLink="/update-form">Edit</button>
+                            <button class="btn btn-success" (click)="onDetails(item.id)">  view</button>
+                        </td>
+                    </tr>
+               
+            </tbody>
+        </table>
+    </div>
+</div>
